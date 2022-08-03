@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+* {
+  font-family: 'Zen Dots', cursive;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+}
+body {
+  background: linear-gradient(#030354, blue, #030354);
+  height: 100vh;
+}
+.container {
+  padding-top 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: 
+    "dis dis dis dis"
+    "AC C divide multiply"
+    "seven eight nine minus"
+    "four five six plus"
+    "one two three equal"
+    "zero zero decimal equal";
+  border: 15px outset #00123d ;
+}
+.padBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px -2px;
+  background-color: #253969;
+  color: white;
+  border: 5px outset silver;
+  cursor: pointer;
+  font-size: 1.5em;
+  user-select: none;
+}
+.padBtn:hover {
+  border: 5px inset silver;
+}
+
+.zero {
+  grid-area: zero;
+}
+.equal {
+  grid-area: equal;
+  background-color: #020838;
+}
+.dis {
+  grid-area: dis;
+  background-color: black;
+}
+.dis input {
+  font-size: 23px;
+  color: #07023d;
+  width: 100%;
+  text-align: right;
+  background-color: #21cfed;
+  border: none;
+}
+.num {
+  background-color: royalblue;
+}
+.total {
+  font-size: 27px;
+  padding: 10px 5px;
+  color: white;
+  text-align: right;
+}
+.spec {
+  background-color: darkblue;
+}
+.decimal {
+  background-color: blue;
+}

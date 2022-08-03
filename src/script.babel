@@ -1,0 +1,58 @@
+function App() {
+  const [expression, setExpression] = React.useState("");
+  const [answer, setAnswer] = React.useState(0);
+  
+  const display = (symbol) => {
+    setExpression((prev) => prev + symbol)
+    if (expression[expression.length - 1 ] == "=") {
+      if(/d./.test(symbol)) {
+        setExpression(symbol)
+      } else {
+        setExpression(answer +  symbol)
+      }
+    }
+  };
+  const calculate = () => {
+    setAnswer(eval(expression));
+    setExpression(prev => prev + "=")
+  }
+  const clearAll = () => {
+    setExpression('');
+    setAnswer('0')
+  }
+  const clear = () => {
+    setExpression(prev => prev.split('').slice(0, prev.length -1).join(''));
+    setAnswer(0)
+  }
+  return (
+  <div className="container">
+      <div className="grid">
+        <div className="dis">
+          <input type="text" value={expression} placeholder="0" id="display" disabled/>
+          <div className="total">{answer}</div>
+        </div>
+        <div onClick={clearAll} className="padBtn AC spec" id="all-clear">AC</div>
+        <div onClick={clear} className="padBtn C spec" id="clear">C</div>
+        <div onClick={()=>display("/")}  className="padBtn divide" id="divide">/</div>
+        <div onClick={()=>display("*")} className="padBtn multiply" id="multiply">x</div>
+        <div onClick={()=>display("7")} className="padBtn seven num" id="seven">7</div>
+        <div onClick={()=>display("8")} className="padBtn eight num" id="eight">8</div>
+        <div onClick={()=>display("9")} className="padBtn nine num" id="nine">9</div>
+        <div onClick={()=>display("-")} className="padBtn minus" id="subtract">-</div>
+        <div onClick={()=>display("4")}  className="padBtn four num" id="four">4</div>
+        <div onClick={()=>display("5")}  className="padBtn five num" id="five">5</div>
+        <div onClick={()=>display("6")} className="padBtn six num" id="six">6</div>
+        <div onClick={()=>display("+")}  className="padBtn plus" id="add">+</div>
+        <div onClick={()=>display("1")}  className="padBtn one num" id="one">1</div>
+        <div onClick={()=>display("2")}  className="padBtn two num" id="two">2</div>
+        <div onClick={()=>display("3")}  className="padBtn three num" id="three">3</div>
+        <div onClick={calculate}  className="padBtn equal" id="equals">=</div>
+        <div onClick={()=>display("0")} className="padBtn zero num" id="zero">0</div>
+        <div onClick={()=>display(".")}  className="padBtn decimal" id="decimal">.</div>
+      </div>
+  </div>
+    
+  )
+}
+
+ReactDOM.render(<App/>, document.querySelector('#root'))
